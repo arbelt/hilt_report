@@ -1,0 +1,13 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12pt;
+}
+
+tbody {
+    font-size: smaller;
+}
+
+pre {
+    font-family: 'Source Code Pro', 'Courier', monospace, sans-serif;
+    font-size: 9pt;
+}
