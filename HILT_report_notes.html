@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>HILT Report Analysis Notes</title>
-<!-- 2013-07-08 Mon 15:21 -->
+<!-- 2013-07-08 Mon 15:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 
@@ -368,7 +368,8 @@ No (96, 67%), Yes (48, 33%)
       data=df,
       facets= ~ affiliation) +
     labs(title = "Agreement with 'critical' by affiliation") +
-    theme(axis.text.x = element_blank())
+    theme(axis.text.x = element_blank(),
+          strip.text.x = element_text(size="7"))
 </pre>
 </div>
 
@@ -376,12 +377,176 @@ No (96, 67%), Yes (48, 33%)
 <div class="figure">
 <p><img  src="critical__affil.png" alt="critical__affil.png" /></p>
 </div>
+
+<div class="org-src-container">
+
+<pre class="src src-R">ascii(df[!is.na(df$questions),1:2])
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">&#xa0;</th>
+<th scope="col" class="left">affiliation</th>
+<th scope="col" class="left">questions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">3</td>
+<td class="left">&#xa0;</td>
+<td class="left">How do you support continuous professional learning for teachers?</td>
+</tr>
+
+<tr>
+<td class="right">13</td>
+<td class="left">Other</td>
+<td class="left">How do you balance the need for students to master material and the need for students to question what they are being told?</td>
+</tr>
+
+<tr>
+<td class="right">14</td>
+<td class="left">Harvard Graduate School of Education</td>
+<td class="left">Pipeline for translating ed research into practice? Models that stress accessibility rather than profit.</td>
+</tr>
+
+<tr>
+<td class="right">19</td>
+<td class="left">Harvard Medical School (including HSDM)</td>
+<td class="left">Following on one of the other questions below (about notecards/flashcards), I&rsquo;m curious to know if Katherine Rawson has any data on successive relearning for concepts (as from more advanced classes) vs. content/intro concepts. Is successive learning effective beyond intro-level courses?</td>
+</tr>
+
+<tr>
+<td class="right">24</td>
+<td class="left">Harvard Medical School (including HSDM)</td>
+<td class="left">How do you manage students&rsquo; feelings of entitlement to their preferred learning styles when they may be at odds with your approach to teaching?</td>
+</tr>
+
+<tr>
+<td class="right">33</td>
+<td class="left">Faculty of Arts and Sciences</td>
+<td class="left">How do we differentiate learning from memorization? Isn&rsquo;t successive relearning just memorization?, What have been your most memorable experiences as a teacher and why?, I&rsquo;d like to know more about the FIELD method</td>
+</tr>
+
+<tr>
+<td class="right">37</td>
+<td class="left">Harvard Graduate School of Education</td>
+<td class="left">How do we consider or factor the way assessments are designed and courses are structured in how well learners learn and retain concepts. Isn&rsquo;t successive relearning trying to address problems that we have created because of how we choose to teach?</td>
+</tr>
+
+<tr>
+<td class="right">43</td>
+<td class="left">Other</td>
+<td class="left">isn&rsquo;t part of the drive to assess part of the structural transformation of the faculty from learned professionals to technically specialized employees?</td>
+</tr>
+
+<tr>
+<td class="right">47</td>
+<td class="left">Faculty of Arts and Sciences</td>
+<td class="left">Should we hold stude, Should we hold students accountable for long term retention?</td>
+</tr>
+
+<tr>
+<td class="right">55</td>
+<td class="left">Harvard Graduate School of Education</td>
+<td class="left">Considering the various definitions of &ldquo;learning&rdquo;, which are effectively assessed through recall?, How do we gather and share rich data about learning that is not easily quantifiable?, When we define learning as delayed recall, how does this limit our investigation of quality teaching?</td>
+</tr>
+
+<tr>
+<td class="right">70</td>
+<td class="left">Other</td>
+<td class="left">How to teach innovation?, How to evaluate a learning or teaching is successful?</td>
+</tr>
+
+<tr>
+<td class="right">81</td>
+<td class="left">Harvard Business School</td>
+<td class="left">How can faculty &amp; staff collaborate to create an environment that promotes a &ldquo;virtuous circle&rdquo; where learning and the application of knowledge &amp; skills are reinforced both inside &amp; outside the classroom?</td>
+</tr>
+
+<tr>
+<td class="right">88</td>
+<td class="left">Harvard Medical School (including HSDM)</td>
+<td class="left">What are the most successful models for cross-campus delivery of discussion-based curriculum to bridge our different schools and different groups of students?</td>
+</tr>
+
+<tr>
+<td class="right">93</td>
+<td class="left">Faculty of Arts and Sciences</td>
+<td class="left">Faculty: we (instructional support staff) struggle to make ourselves available to you, yet so often you voice concern that you do not have enough support. How can we do a better job of reaching out to you when you need us?</td>
+</tr>
+
+<tr>
+<td class="right">115</td>
+<td class="left">Faculty of Arts and Sciences</td>
+<td class="left">Katherine Rawson and Eric Mazur have made directly opposing statements about notecards in the past two days. I&rsquo;d love to hear a discussion - diversity about points of view is interesting!</td>
+</tr>
+
+<tr>
+<td class="right">149</td>
+<td class="left">&#xa0;</td>
+<td class="left">Is there any data showing positive or negative impacts of courses that make extensive use of activity based learning</td>
+</tr>
+
+<tr>
+<td class="right">153</td>
+<td class="left">Harvard Divinity School</td>
+<td class="left">C</td>
+</tr>
+
+<tr>
+<td class="right">191</td>
+<td class="left">&#xa0;</td>
+<td class="left">What should we be teaching: content and curriculum choices? (e.g. Is Shakespeare relevant in the 21st century)</td>
+</tr>
+
+<tr>
+<td class="right">231</td>
+<td class="left">&#xa0;</td>
+<td class="left">With the advent of MOOCs (massive open on-line course) such as those offered by EdX, what would be the best way to leverage these large communities of students to inform and drive teaching methods?</td>
+</tr>
+
+<tr>
+<td class="right">232</td>
+<td class="left">&#xa0;</td>
+<td class="left">what is the appropriate unit of time across which to measure change in student or teacher efficiency? Semester? 4 years? Lifetime?</td>
+</tr>
+
+<tr>
+<td class="right">233</td>
+<td class="left">&#xa0;</td>
+<td class="left">Some great online courses in the sciences have interactive exercises and simulations. What are potential advantages of online courses in the social sciences and humanities? -Hauke</td>
+</tr>
+
+<tr>
+<td class="right">234</td>
+<td class="left">&#xa0;</td>
+<td class="left">Much of the research on learning seems focused on helping students to master certain types of information and concepts.  However, most of the people in this room indicated that the most important things about learning have to do with engagement, passion, and, Most of the researc, Most</td>
+</tr>
+
+<tr>
+<td class="right">235</td>
+<td class="left">&#xa0;</td>
+<td class="left">Is &ldquo;students retain 90% of what they do, 50% of what they hear and 10% of what they see&rdquo; a myth?</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Albert Z. Wang</p>
-<p class="date">Created: 2013-07-08 Mon 15:21</p>
+<p class="date">Created: 2013-07-08 Mon 15:42</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode )</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

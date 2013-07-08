@@ -8,3 +8,13 @@ df$affiliation <- factor(df$affiliation)
 df$critical <- factor(df$critical)
 
 library("ggplot2")
+library("Hmisc")
+library("ascii")
+options(asciiType="org")
+
+options(warn=-1)
+ascii(summary(df))
+
+describe(df[,-2])
+
+ascii(df[!is.na(df$questions),1:2])
