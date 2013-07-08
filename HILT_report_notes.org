@@ -1,0 +1,132 @@
+#+TITLE: HILT Report Analysis Notes
+#+PROPERTY: tangle yes
+#+HTML_HEAD: <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+#+HTML_HEAD: <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+#+HTML_HEAD: <link href='styles.css' rel='stylesheet' type='text/css' />
+
+* Data summary
+
+#+BEGIN_SRC R :session :results silent :exports code
+  df <- read.csv("HILT Report.csv", header=TRUE, stringsAsFactors=FALSE, na.strings="")
+  names(df) <- c("affiliation", "questions", "successive", "critical")
+#+END_SRC
+
+#+BEGIN_SRC R :session :results silent :exports code
+  df$successive <- factor(df$successive,
+                          c("Skeptical", "Somewhere in between", "Enthusiastic"))
+  df$affiliation <- factor(df$affiliation)
+  df$critical <- factor(df$critical)
+#+END_SRC
+
+#+BEGIN_SRC R :session :results silent :exports code
+  library("ggplot2")
+  library("Hmisc")
+  library("ascii")
+  options(asciiType="org")
+#+END_SRC
+
+#+BEGIN_SRC R :session :results output raw :exports both
+  options(warn=-1)
+  ascii(summary(df))
+#+END_SRC
+
+#+RESULTS:
+|   | affiliation                                | questions        | successive               | critical |
+|---+--------------------------------------------+------------------+--------------------------+----------|
+| 1 | Faculty of Arts and Sciences           :44 | Length:235       | Skeptical           : 14 | No  :96  |
+| 2 | Harvard Graduate School of Education   :26 | Class :character | Somewhere in between: 52 | Yes :48  |
+| 3 | Harvard Medical School (including HSDM):18 | Mode  :character | Enthusiastic        :101 | NA's:91  |
+| 4 | Other                                  :16 |                  | NA's                : 68 |          |
+| 5 | Harvard Law School                     :11 |                  |                          |          |
+| 6 | (Other)                                :54 |                  |                          |          |
+| 7 | NA's                                   :66 |                  |                          |          |
+
+#+name: data_description
+#+BEGIN_SRC R :session :results output :exports both
+  describe(df[,-2])
+#+END_SRC
+
+#+RESULTS: data_description
+#+begin_example
+df[, -2]
+
+ 3  Variables      235  Observations
+--------------------------------------------------------------------------------
+affiliation
+      n missing  unique
+    169      66      14
+
+Central Administration (10, 6%), Division of Continuing Education (1, 1%)
+Faculty of Arts and Sciences (44, 26%), Graduate School of Design (6, 4%)
+Harvard Business School (4, 2%), Harvard Divinity School (5, 3%)
+Harvard Graduate School of Education (26, 15%), Harvard Kennedy School (8, 5%)
+Harvard Law School (11, 7%), Harvard Medical School (including HSDM) (18, 11%)
+Harvard School of Public Health (11, 7%), Other (16, 9%)
+Radcliffe Institute for Advanced Study (1, 1%)
+School of Engineering and Applied Sciences (8, 5%)
+--------------------------------------------------------------------------------
+successive
+      n missing  unique
+    167      68       3
+
+Skeptical (14, 8%), Somewhere in between (52, 31%), Enthusiastic (101, 60%)
+--------------------------------------------------------------------------------
+critical
+      n missing  unique
+    144      91       2
+
+No (96, 67%), Yes (48, 33%)
+--------------------------------------------------------------------------------
+#+end_example
+
+* Basic plots
+
+#+BEGIN_SRC R :session :results graphics :file affiliation.png :exports both :height 500 :width 800
+  qplot(affiliation, data=df,
+        color=df$affiliation) +
+      ggtitle("Respondents by affiliation") +
+      theme(axis.text.x = element_blank())
+#+END_SRC
+
+#+RESULTS:
+[[file:affiliation.png]]
+
+#+BEGIN_SRC R :session :results graphics :file successive__affil.png :exports both :width 800 :height 500
+  qplot(successive, data=df,
+        color=successive,
+        facets= ~ affiliation) +
+      theme(axis.text.x = element_blank(),
+            strip.text.x = element_text(size="7")) +
+      labs(title = "Agreement with 'successive relearning'")
+#+END_SRC
+
+#+RESULTS:
+[[file:successive__affil.png]]
+
+#+BEGIN_SRC R :session :results graphics :file successive__total.png :exports both :width 800 :height 500
+  qplot(successive, color=successive, data=df) +
+      labs(title = "Agreement with 'successive relearning'")
+#+END_SRC
+
+#+RESULTS:
+[[file:successive__total.png]]
+
+#+BEGIN_SRC R :session :results graphics :file critical__total.png :exports both :width 800 :height 500
+  qplot(critical, color=critical, data=df) +
+      labs(title = "Agreement with 'critical'")
+#+END_SRC
+
+#+RESULTS:
+[[file:critical__total.png]]
+
+#+BEGIN_SRC R :session :results graphics :file critical__affil.png :exports both :width 800 :height 500
+  qplot(critical, color=critical,
+        data=df,
+        facets= ~ affiliation) +
+      labs(title = "Agreement with 'critical' by affiliation") +
+      theme(axis.text.x = element_blank(),
+            strip.text.x = element_text(size="7"))
+#+END_SRC
+
+#+RESULTS:
+[[file:critical__affil.png]]
